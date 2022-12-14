@@ -58,7 +58,7 @@ function setTextLine(inputValue) {
 
 function setImg(value) {
   gMeme.selectedImgId = value;
-  gMeme.lines[0].txt = 'Add Text Here'
+  gMeme.lines[0].txt = 'Add Text Here' // Set defense - if currId is equal to set Id - return
   _saveMemeToStorage();
 }
 
