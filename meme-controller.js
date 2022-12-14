@@ -28,7 +28,7 @@ function drawText(text, x, y, color, size) {
 
 function drawImg(imgId, memeTxt, memeColor, memeFontSize) {
   const elImg = new Image();
-  elImg.src = `./assets/${imgId}.jpg`;
+  elImg.src = `./assets/images/${imgId}.jpg`;
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
     drawText(memeTxt, gElCanvas.width / 2, 50, memeColor, memeFontSize);

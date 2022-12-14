@@ -10,28 +10,36 @@
   <body onload="onInit()">
     <header>
       <div class="logo">MemeGen</div>
-      <nav>navbar TBA</nav>
+      <nav>
+        <ul>
+          <li>Gallery</li>
+          <li>Editor</li>
+          <li>About</li>
+        </ul>
+      </nav>
     </header>
     <section class="gallery"></section>
     <section class="editor">
       <div class="canvas-container">
         <canvas id="canvas" width="500" height="500"></canvas>
       </div>
+    </section>
+    <section class="control-box">
       <div class="meme-editor">
-          This is the upper text
-          <input
-            type="text"
-            placeholder="Add text here"
-            onkeypress="onCreateInput(this.value)"
-          />
-          <input
-            type="color"
-            name="color"
-            id="color"
-            onchange="onChangeColor(this.value)"
-          />
-          <button onmousedown="onChangeFontSize(+1)">+</button>
-          <button onmousedown="onChangeFontSize(-1)">-</button>
+        This is the upper text
+        <input
+          type="text"
+          placeholder="Add text here"
+          onkeypress="onCreateInput(this.value)"
+        />
+        <input
+          type="color"
+          name="color"
+          id="color"
+          onchange="onChangeColor(this.value)"
+        />
+        <button onmousedown="onChangeFontSize(+1)">+</button>
+        <button onmousedown="onChangeFontSize(-1)">-</button>
       </div>
     </section>
 

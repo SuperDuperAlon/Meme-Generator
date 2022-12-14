@@ -11,7 +11,7 @@ function renderGallery() {
   var imageHTML = images
     .map(
       (image) => `
-        <img src="./assets/${image.id}.jpg" onclick="onImageSelect(${image.id})">`
+        <img src="./assets/images/${image.id}.jpg" onclick="onImageSelect(${image.id})">`
     )
     .join("");
 
