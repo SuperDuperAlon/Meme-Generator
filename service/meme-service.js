@@ -56,6 +56,19 @@ function setTextLine(inputValue) {
   return gMeme;
 }
 
+function setColor(inputValue) {
+  gMeme.lines[0].color = `${inputValue}`;
+  _saveMemeToStorage();
+  return gMeme;
+}
+
+function setFontSize(val) {
+  gMeme.lines[0].size += val  
+  console.log(gMeme.lines[0].size);
+  _saveMemeToStorage();
+  return gMeme;
+}
+
 function setImg(value) {
   gMeme.selectedImgId = value;
   gMeme.lines[0].txt = 'Add Text Here' // Set defense - if currId is equal to set Id - return

@@ -18,21 +18,25 @@
         <canvas id="canvas" width="500" height="500"></canvas>
       </div>
       <div class="meme-editor">
-        <form>
           This is the upper text
           <input
             type="text"
             placeholder="Add text here"
             onkeypress="onCreateInput(this.value)"
           />
-          ,<input type="color" name="color" id="color">
-          <button>final input</button>
-        </form>
+          <input
+            type="color"
+            name="color"
+            id="color"
+            onchange="onChangeColor(this.value)"
+          />
+          <button onmousedown="onChangeFontSize(+1)">+</button>
+          <button onmousedown="onChangeFontSize(-1)">-</button>
       </div>
     </section>
 
-    <script src="/service/storage-service.js"></script>
-    <script src="/service/meme-service.js"></script>
+    <script src="./service/storage-service.js"></script>
+    <script src="./service/meme-service.js"></script>
     <script src="meme-controller.js"></script>
     <script src="gallery-controller.js"></script>
     <script src="app.js"></script>

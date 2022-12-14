@@ -7,13 +7,11 @@ function onGallery() {
 function renderGallery() {
   const images = getImages();
   const elGallery = document.querySelector(".gallery");
-  console.log(elGallery);
-  console.log("yes");
 
   var imageHTML = images
     .map(
       (image) => `
-        <img src="assets/${image.id}.jpg" onclick="onImageSelect(${image.id})">`
+        <img src="./assets/${image.id}.jpg" onclick="onImageSelect(${image.id})">`
     )
     .join("");
 
