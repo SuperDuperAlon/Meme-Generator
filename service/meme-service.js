@@ -1,5 +1,6 @@
 "use strict";
 
+const KEY_STORAGE = "memeDB";
 var gMeme = {
   selectedImgId: 19,
   selectedLineIdx: 0,
@@ -36,6 +37,7 @@ var gImgs = [
 ];
 
 function getMeme() {
+  gMeme = loadFromStorage(KEY_STORAGE);
   return gMeme;
 }
 
@@ -50,13 +52,16 @@ function getMemeById(memeId) {
 
 function setTextLine(inputValue) {
   gMeme.lines[0].txt = `${inputValue}`;
-  console.log(gMeme.lines[0].txt);
-  console.log(gMeme);
+  _saveMemeToStorage();
   return gMeme;
 }
 
 function setImg(value) {
-  console.log(value);
   gMeme.selectedImgId = value;
-  console.log(gMeme);
+  gMeme.lines[0].txt = 'Add Text Here'
+  _saveMemeToStorage();
+}
+
+function _saveMemeToStorage() {
+  saveToStorage(KEY_STORAGE, gMeme);
 }
