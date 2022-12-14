@@ -1,1 +1,6 @@
-// alert('Hello World')
+'use strict'
+
+function onInit() {
+    onGallery()
+    onEditor()
+}

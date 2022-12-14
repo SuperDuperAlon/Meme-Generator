@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MemeGen</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body onload="onInit()">
     <header>
-        <div class="logo">MemeGen</div>
-        <nav>navbar TBA</nav>
+      <div class="logo">MemeGen</div>
+      <nav>navbar TBA</nav>
     </header>
     <section class="gallery"></section>
     <section class="editor">
-        <canvas></canvas>
+      <div class="canvas-container">
+        <canvas id="canvas" width="500" height="500"></canvas>
+      </div>
+      <div class="meme-editor">
+        <form>
+          This is the upper text
+          <input
+            type="text"
+            placeholder="Add text here"
+            onchange="onCreateInput(this.value)"
+          />
+          <button>final input</button>
+        </form>
+      </div>
     </section>
-    
-    <script src="app.js"></script>
-</body>
+
+    <script src="/service/meme-service.js"></script>
+    <script src="meme-controller.js"></script>
+    <script src="gallery-controller.js"></script>
+<script src="app.js"></script>
+  </body>
 </html>
