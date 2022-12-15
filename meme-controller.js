@@ -6,18 +6,12 @@ let gCtx;
 function onEditor() {
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
-  // renderMeme()
   renderMeme();
 }
 
 function renderMeme() {
   var meme = getMeme();
-  drawImg(
-    meme.selectedImgId
-    // meme.lines[0].txt,
-    // meme.lines[0].fontColor,
-    // meme.lines[0].fontSize
-  );
+  drawImg(meme.selectedImgId);
 }
 
 function renderText() {
@@ -72,9 +66,6 @@ function drawImg(imgId) {
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
     renderText();
-    // drawText(memeTxt, gElCanvas.width / 2, 50, memeColor, memeFontSize);
-    // drawText("Add Lower Text Here", gElCanvas.width / 2, gElCanvas.height - 50);
-    // renderMeme()
   };
 }
 
@@ -99,11 +90,11 @@ function onAddLine() {
 }
 
 function onSwitchLine(val) {
-  switchLine(val) 
-  renderMeme()
+  switchLine(val);
+  renderMeme();
 }
 
 function onDeleteLine() {
-  deleteLine()
-  renderMeme()
+  deleteLine();
+  renderMeme();
 }

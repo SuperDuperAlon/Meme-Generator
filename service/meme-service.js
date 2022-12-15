@@ -30,7 +30,6 @@ var gImgs = [
 
 function getMeme() {
   gMeme = loadFromStorage(KEY_STORAGE);
-  console.log(gMeme);
   return gMeme;
 }
 
@@ -45,7 +44,6 @@ function getImages() {
 
 function setTextLine(inputValue) {
   var meme = getMeme();
-  console.log(gMeme);
   meme.lines[meme.selectedLineIdx].txt = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
@@ -75,7 +73,6 @@ function addLine() {
 
 function switchLine(val) {
   gMeme.selectedLineIdx = gMeme.selectedLineIdx + val;
-  console.log(gMeme.selectedLineIdx);
   if (gMeme.selectedLineIdx < 0) {
     gMeme.selectedLineIdx = 0;
   }
