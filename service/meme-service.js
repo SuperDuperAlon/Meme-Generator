@@ -85,6 +85,11 @@ function switchLine(val) {
   _saveMemeToStorage();
 }
 
+function deleteLine() {
+  gMeme.lines.splice(gMeme.selectedLineIdxs, 1);
+  _saveMemeToStorage();
+}
+
 function _createMeme(value) {
   gMeme = {
     selectedImgId: value,

@@ -102,3 +102,8 @@ function onSwitchLine(val) {
   switchLine(val) 
   renderMeme()
 }
+
+function onDeleteLine() {
+  deleteLine()
+  renderMeme()
+}
