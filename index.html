@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MemeGen</title>
+    <script
+      src="https://kit.fontawesome.com/69dd70fee5.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body onload="onInit()" class="main-layout">
@@ -23,7 +27,7 @@
     </section>
     <section class="editor">
       <div class="canvas-container">
-        <canvas id="canvas" width="400" height="400"></canvas>
+        <canvas class="canvas" id="canvas" width="400" height="400"></canvas>
       </div>
       <div class="control-box">
         <input
@@ -32,23 +36,33 @@
           placeholder="Add your text here"
           onkeypress="onCreateInput(this.value)"
         />
+
         <input
           class="color-editor"
           type="color"
           name="color"
           id="color"
+          value="#fff"
           onchange="onChangeColor(this.value)"
         />
-        <div class="switch-button-editor">
-          <button onclick="onSwitchLine(+1)">Switch Up</button>
-          <button onclick="onSwitchLine(-1)">Switch Down</button>
+
+        <div class="line-editor">
+          <div class="switch-button-editor">
+            <button onclick="onSwitchLine(+1)">Switch Up</button>
+            <button onclick="onSwitchLine(-1)">Switch Down</button>
+          </div>
+          <div class="add-line-editor">
+            <button onclick="onAddLine()">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <div class="delete-button-editor">
+            <button onclick="onDeleteLine()">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
         </div>
-        <div class="add-line-editor">
-          <button onclick="onAddLine()">Add Line</button>
-        </div>
-        <div class="delete-button-editor">
-          <button onclick="onDeleteLine()">Delete</button>
-        </div>
+
         <div class="font-style-editor">
           <select name="" id="">
             <option value="impact">Impact</option>
@@ -62,9 +76,9 @@
           <button onclick="onChangeFontSize(-1)">-</button>
         </div>
         <div class="text-align-editor">
-          <button>Left</button>
-          <button>Center</button>
-          <button>Right</button>
+          <button><i class="fa-solid fa-align-left"></i></button>
+          <button><i class="fa-solid fa-align-center"></i></button>
+          <button><i class="fa-solid fa-align-right"></i></button>
         </div>
       </div>
     </section>

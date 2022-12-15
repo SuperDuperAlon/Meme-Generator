@@ -50,13 +50,13 @@ function setTextLine(inputValue) {
 }
 
 function setColor(inputValue) {
-  gMeme.lines.fontColor = `${inputValue}`;
+  gMeme.lines[gMeme.selectedLineIdx].fontColor = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
 
 function setFontSize(val) {
-  gMeme.lines.fontSize += val;
+  gMeme.lines[gMeme.selectedLineIdx].fontSize += val;
   _saveMemeToStorage();
   return gMeme;
 }
@@ -108,7 +108,7 @@ function _createLine() {
     txt: "Add Text Here",
     fontSize: 20,
     textAlign: "center",
-    textColor: "red",
+    textColor: "white",
   };
 
   return newLine;

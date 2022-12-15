@@ -46,8 +46,8 @@ function renderText() {
 }
 
 function drawText(text, x, y, color, size) {
-  gCtx.lineWidth = 2;
-  gCtx.strokeStyle = "white";
+  gCtx.lineWidth = 1;
+  gCtx.strokeStyle = "black";
   gCtx.fillStyle = color;
   gCtx.font = `${size}px impact`;
   gCtx.textAlign = "center"; // shift to end and start
