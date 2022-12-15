@@ -14,6 +14,10 @@ var gMeme = {
   ],
 };
 
+function saveInitialDB() {
+  saveToStorage(KEY_STORAGE, gMeme);
+}
+
 var gImgs = [
   { id: 1, url: "./assets/images/1.jpg", keywords: ["funny", "cat"] },
   { id: 2, url: "./assets/images/2.jpg", keywords: ["funny", "cat"] },
@@ -38,6 +42,7 @@ var gImgs = [
 
 function getMeme() {
   gMeme = loadFromStorage(KEY_STORAGE);
+  console.log(gMeme);
   return gMeme;
 }
 
@@ -45,10 +50,10 @@ function getImages() {
   return gImgs;
 }
 
-function getMemeById(memeId) {
-  var meme = gMeme.find((meme) => memeId === meme.selectedImgId);
-  return meme;
-}
+// function getMemeById(memeId) {
+//   var meme = gMeme.find((meme) => memeId === meme.selectedImgId);
+//   return meme;
+// }
 
 function setTextLine(inputValue) {
   gMeme.lines[0].txt = `${inputValue}`;
@@ -70,8 +75,12 @@ function setFontSize(val) {
 }
 
 function setImg(value) {
+  // var meme = getMeme();
+  console.log(value);
+  console.log(gMeme);
   gMeme.selectedImgId = value;
   gMeme.lines[0].txt = "Add Text Here"; // Set defense - if currId is equal to set Id - return
+  console.log(gMeme);
   _saveMemeToStorage();
 }
 

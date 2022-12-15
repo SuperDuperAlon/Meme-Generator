@@ -6,11 +6,13 @@ let gCtx;
 function onEditor() {
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
-  renderMeme();
+  // renderMeme()
+  renderMeme()
 }
 
 function renderMeme() {
   var meme = getMeme();
+  console.log(meme);
   drawImg(
     meme.selectedImgId,
     meme.lines[0].txt,
@@ -26,7 +28,7 @@ function drawText(text, x, y, color, size) {
   gCtx.font = `${size}px impact`;
   gCtx.textAlign = "center"; // shift to end and start  
   gCtx.textBaseline = "middle";
-  gCtx.lineJoin = 'round'
+  // gCtx.lineJoin = 'round'
 
 // multiline https://codepen.io/nishiohirokazu/pen/jjNyye
 
