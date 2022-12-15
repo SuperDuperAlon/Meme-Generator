@@ -3,7 +3,6 @@
 const KEY_STORAGE = "memeDB";
 var gMeme;
 
-
 console.log(gMeme);
 
 var gImgs = [
@@ -31,10 +30,14 @@ function _createMeme(value) {
   gMeme = {
     selectedImgId: value,
     selectedLineIdx: 0,
-    lines: [""],
-    fontSize: 20,
-    TextAlign: "center",
-    TextColor: "red",
+    lines: [
+      {
+        txt: "Add Text Here",
+        fontSize: 20,
+        TextAlign: "center",
+        TextColor: "red",
+      },
+    ],
   };
   _saveMemeToStorage();
 }
@@ -57,19 +60,19 @@ function getImages() {
 function setTextLine(inputValue) {
   var meme = getMeme();
   console.log(gMeme);
-  meme.lines[meme.selectedLineIdx] = `${inputValue}`;
+  meme.lines[meme.selectedLineIdx].txt= `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
 
 function setColor(inputValue) {
-  gMeme.fontColor = `${inputValue}`;
+  gMeme.lines.fontColor = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
 
 function setFontSize(val) {
-  gMeme.fontSize += val;
+  gMeme.lines.fontSize += val;
   _saveMemeToStorage();
   return gMeme;
 }
@@ -80,7 +83,19 @@ function setImg(value) {
 }
 
 function addLine(line) {
-  gMeme.lines.push(line);
+  (gMeme.lines).push(_createLine());
+  _saveMemeToStorage();
+}
+
+function _createLine() {
+  var newLine = {
+    txt: "Add Text Here",
+    fontSize: 20,
+    textAlign: "center",
+    textColor: "red",
+  };
+
+  return newLine;
 }
 
 function _saveMemeToStorage() {
