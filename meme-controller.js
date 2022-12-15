@@ -22,21 +22,33 @@ function renderMeme() {
 
 function renderText() {
   var meme = getMeme();
-  console.log(meme);
-  drawText(
-    meme.lines[0].txt,
-    gElCanvas.width / 2,
-    50,
-    meme.lines[0].fontColor,
-    meme.lines[0].fontSize
-  );
-  drawText(
-    meme.lines[1].txt,
-    gElCanvas.width / 2,
-    gElCanvas.height - 50,
-    meme.lines[0].fontColor,
-    meme.lines[0].fontSize
-  );
+  for (var i = 0; i < meme.lines.length; i++) {
+    if (i === 0) {
+      drawText(
+        meme.lines[0].txt,
+        gElCanvas.width / 2,
+        50,
+        meme.lines[0].fontColor,
+        meme.lines[0].fontSize
+      );
+    } else if (i === 1) {
+      drawText(
+        meme.lines[1].txt,
+        gElCanvas.width / 2,
+        gElCanvas.height - 50,
+        meme.lines[1].fontColor,
+        meme.lines[1].fontSize
+      );
+    } else {
+      drawText(
+        meme.lines[i].txt,
+        gElCanvas.width / 2,
+        gElCanvas.height / 2,
+        meme.lines[i].fontColor,
+        meme.lines[i].fontSize
+      );
+    }
+  }
 }
 
 function drawText(text, x, y, color, size) {
