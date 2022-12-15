@@ -39,6 +39,10 @@
           id="color"
           onchange="onChangeColor(this.value)"
         />
+        <div class="switch-button-editor">
+          <button onclick="onSwitchLine(+1)">Switch Up</button>
+          <button onclick="onSwitchLine(-1)">Switch Down</button>
+        </div>
         <div class="add-line-editor">
           <button onclick="onAddLine()">Add Line</button>
         </div>
@@ -51,8 +55,8 @@
           </select>
         </div>
         <div class="font-size-editor">
-          <button onmousedown="onChangeFontSize(+1)">+</button>
-          <button onmousedown="onChangeFontSize(-1)">-</button>
+          <button onclick="onChangeFontSize(+1)">+</button>
+          <button onclick="onChangeFontSize(-1)">-</button>
         </div>
         <div class="text-align-editor">
           <button>Left</button>

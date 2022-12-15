@@ -2,6 +2,7 @@
 
 const KEY_STORAGE = "memeDB";
 var gMeme;
+var gLineIdx = 0;
 
 console.log(gMeme);
 
@@ -26,21 +27,6 @@ var gImgs = [
   { id: 18, url: "./assets/images/18.jpg", keywords: ["funny", "cat"] },
   { id: 19, url: "./assets/images/19.jpg", keywords: ["funny", "cat"] },
 ];
-function _createMeme(value) {
-  gMeme = {
-    selectedImgId: value,
-    selectedLineIdx: 0,
-    lines: [
-      {
-        txt: "Add Text Here",
-        fontSize: 20,
-        TextAlign: "center",
-        TextColor: "red",
-      },
-    ],
-  };
-  _saveMemeToStorage();
-}
 
 function getMeme() {
   gMeme = loadFromStorage(KEY_STORAGE);
@@ -60,7 +46,7 @@ function getImages() {
 function setTextLine(inputValue) {
   var meme = getMeme();
   console.log(gMeme);
-  meme.lines[meme.selectedLineIdx].txt= `${inputValue}`;
+  meme.lines[meme.selectedLineIdx].txt = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
@@ -82,8 +68,36 @@ function setImg(value) {
   _createMeme(value);
 }
 
-function addLine(line) {
-  (gMeme.lines).push(_createLine());
+function addLine() {
+  gMeme.lines.push(_createLine());
+  _saveMemeToStorage();
+}
+
+function switchLine(val) {
+  gMeme.selectedLineIdx = gMeme.selectedLineIdx + val;
+  console.log(gMeme.selectedLineIdx);
+  if (gMeme.selectedLineIdx < 0) {
+    gMeme.selectedLineIdx = 0;
+  }
+  if (gMeme.selectedLineIdx > gMeme.lines.length) {
+    gMeme.selectedLineIdx = gMeme.lines.length;
+  }
+  _saveMemeToStorage();
+}
+
+function _createMeme(value) {
+  gMeme = {
+    selectedImgId: value,
+    selectedLineIdx: 0,
+    lines: [
+      {
+        txt: "Add Text Here",
+        fontSize: 20,
+        TextAlign: "center",
+        TextColor: "red",
+      },
+    ],
+  };
   _saveMemeToStorage();
 }
 

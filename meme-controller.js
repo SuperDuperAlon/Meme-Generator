@@ -94,6 +94,11 @@ function onChangeFontSize(num) {
 }
 
 function onAddLine() {
-  addLine("text");
+  addLine();
   renderMeme();
+}
+
+function onSwitchLine(val) {
+  switchLine(val) 
+  renderMeme()
 }
