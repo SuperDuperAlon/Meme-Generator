@@ -1,22 +1,10 @@
 "use strict";
 
 const KEY_STORAGE = "memeDB";
-var gMeme = {
-  selectedImgId: 19,
-  selectedLineIdx: 0,
-  lines: [
-    {
-      txt: "Add Text Here",
-      size: 20,
-      align: "left",
-      color: "red",
-    },
-  ],
-};
+var gMeme;
 
-function saveInitialDB() {
-  saveToStorage(KEY_STORAGE, gMeme);
-}
+
+console.log(gMeme);
 
 var gImgs = [
   { id: 1, url: "./assets/images/1.jpg", keywords: ["funny", "cat"] },
@@ -39,6 +27,17 @@ var gImgs = [
   { id: 18, url: "./assets/images/18.jpg", keywords: ["funny", "cat"] },
   { id: 19, url: "./assets/images/19.jpg", keywords: ["funny", "cat"] },
 ];
+function _createMeme(value) {
+  gMeme = {
+    selectedImgId: value,
+    selectedLineIdx: 0,
+    lines: [""],
+    fontSize: 20,
+    TextAlign: "center",
+    TextColor: "red",
+  };
+  _saveMemeToStorage();
+}
 
 function getMeme() {
   gMeme = loadFromStorage(KEY_STORAGE);
@@ -56,32 +55,32 @@ function getImages() {
 // }
 
 function setTextLine(inputValue) {
-  gMeme.lines[0].txt = `${inputValue}`;
+  var meme = getMeme();
+  console.log(gMeme);
+  meme.lines[meme.selectedLineIdx] = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
 
 function setColor(inputValue) {
-  gMeme.lines[0].color = `${inputValue}`;
+  gMeme.fontColor = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
 
 function setFontSize(val) {
-  gMeme.lines[0].size += val;
-  console.log(gMeme.lines[0].size);
+  gMeme.fontSize += val;
   _saveMemeToStorage();
   return gMeme;
 }
 
 function setImg(value) {
-  // var meme = getMeme();
   console.log(value);
-  console.log(gMeme);
-  gMeme.selectedImgId = value;
-  gMeme.lines[0].txt = "Add Text Here"; // Set defense - if currId is equal to set Id - return
-  console.log(gMeme);
-  _saveMemeToStorage();
+  _createMeme(value);
+}
+
+function addLine(line) {
+  gMeme.lines.push(line);
 }
 
 function _saveMemeToStorage() {

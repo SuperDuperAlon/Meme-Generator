@@ -166,7 +166,7 @@ header a:active {
     padding: 3rem;
     display: flex;
     flex-direction: row;
-    /* display: none; */
+
 }
 
 .canvas-container {
