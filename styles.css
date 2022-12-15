@@ -3,15 +3,200 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: antiquewhite;
+/* vars */
+
+/* bp */
+:root {
+    --s: 600px;
+    --m: 900px;
+    --l: 1060px;
 }
 
-canvas {
-    background-color: white;
+/* BASE */
+
+/* typography */
+
+@font-face {
+    font-family: luckiest-guy;
+    src: url("./assets/fonts/logo-font/LuckiestGuy-Regular.ttf")
+}
+
+@font-face {
+    font-family: assistant;
+    src: url("./assets/fonts/Assistant-Regular.ttf")
+}
+
+/* basicx */
+
+body {
+    margin: 0;
+    font-family: assistant;
+}
+
+.main-layout>*:not(.full) {
+    /* max-width: 980px; */
+    max-width: var(--l);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    /* width: 100px;
+    height: 100px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* components */
+
+/* Header */
+
+header {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    width: 100%;
+}
+
+.logo {
+    font-family: luckiest-guy;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header a {
+    color: black;
+    font-size: 1.25rem;
+    padding: 1.7rem;
+    background-color: #b1631a;
+}
+
+
+header a:hover {
+    color: black;
+    font-size: 1.25rem;
+    padding: 1.8rem;
+    background-color: white;
+}
+
+header a:active {
+    color: black;
+    font-size: 1.25rem;
+    padding: 1.8rem;
+    background-color: greenyellow;
+}
+
+/* Gallery */
+.gallery {
+    width: 100%;
+    height: 100vh;
+    padding: 3rem;
+    display: block;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.shadow img {
+    transition: .5s ease;
+}
+
+.shadow img:hover {
+    box-shadow:
+        1px 1px #b1631a,
+        2px 2px #b1631a,
+        3px 3px #b1631a,
+        4px 4px #b1631a,
+        5px 5px #b1631a,
+        6px 6px #b1631a;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    transition: .5s ease;
+}
+
+/* Editor */
+.editor {
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: row;
+    display: none;
+}
+
+.canvas-container {
+    width: 60%
+}
+
+.control-box {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    justify-content: center;
+    border: #b1631a 1px solid;
+}
+
+.text-editor {
+    font-size: 1.25rem;
+    padding: 0.5rem .25rem;
+    margin: 0.5rem .25rem
+}
+
+.color-editor {
+    background: none;
+    height: 1.75rem;
+    width: 100%;
+    margin: 0.5rem .25rem;
+    /* border: none; */
+}
+
+.font-size-editor  button{
+    width: 3rem;
+    height: 3rem;
 }

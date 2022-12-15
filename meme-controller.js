@@ -11,7 +11,12 @@ function onEditor() {
 
 function renderMeme() {
   var meme = getMeme();
-  drawImg(meme.selectedImgId, meme.lines[0].txt, meme.lines[0].color, meme.lines[0].size);
+  drawImg(
+    meme.selectedImgId,
+    meme.lines[0].txt,
+    meme.lines[0].color,
+    meme.lines[0].size
+  );
 }
 
 function drawText(text, x, y, color, size) {
@@ -19,8 +24,11 @@ function drawText(text, x, y, color, size) {
   gCtx.strokeStyle = "white";
   gCtx.fillStyle = color;
   gCtx.font = `${size}px impact`;
-  gCtx.textAlign = "center";
+  gCtx.textAlign = "center"; // shift to end and start  
   gCtx.textBaseline = "middle";
+  gCtx.lineJoin = 'round'
+
+// multiline https://codepen.io/nishiohirokazu/pen/jjNyye
 
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
@@ -47,6 +55,6 @@ function onChangeColor(value) {
 }
 
 function onChangeFontSize(num) {
-    setFontSize(num)
-    renderMeme()
+  setFontSize(num);
+  renderMeme();
 }

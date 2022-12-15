@@ -7,39 +7,55 @@
     <title>MemeGen</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body onload="onInit()">
-    <header>
+  <body onload="onInit()" class="main-layout">
+    <header class="main-layout full">
       <div class="logo">MemeGen</div>
       <nav>
-        <ul>
-          <li>Gallery</li>
-          <li>Editor</li>
-          <li>About</li>
+        <ul class="clean-list">
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Editor</a></li>
+          <li><a href="#">About</a></li>
         </ul>
       </nav>
     </header>
-    <section class="gallery"></section>
+    <section class="gallery">
+      <div class="grid-container"></div>
+    </section>
     <section class="editor">
       <div class="canvas-container">
-        <canvas id="canvas" width="500" height="500"></canvas>
+        <canvas id="canvas" width="400" height="400"></canvas>
       </div>
-    </section>
-    <section class="control-box">
-      <div class="meme-editor">
-        This is the upper text
+      <div class="control-box">
         <input
+          class="text-editor"
           type="text"
-          placeholder="Add text here"
+          placeholder="Add your text here"
           onkeypress="onCreateInput(this.value)"
         />
         <input
+          class="color-editor"
           type="color"
           name="color"
           id="color"
           onchange="onChangeColor(this.value)"
         />
-        <button onmousedown="onChangeFontSize(+1)">+</button>
-        <button onmousedown="onChangeFontSize(-1)">-</button>
+        <div class="font-style-editor">
+          <select name="" id="">
+            <option value="impact">Impact</option>
+            <option value="arial">Arial</option>
+            <option value="serif">Serif</option>
+            <option value="sans-serif">Sans-Serif</option>
+          </select>
+        </div>
+        <div class="font-size-editor">
+          <button onmousedown="onChangeFontSize(+1)">+</button>
+          <button onmousedown="onChangeFontSize(-1)">-</button>
+        </div>
+        <div class="text-align-editor">
+          <button>Left</button>
+          <button>Center</button>
+          <button>Right</button>
+        </div>
       </div>
     </section>
 
