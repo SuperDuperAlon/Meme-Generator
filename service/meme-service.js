@@ -87,6 +87,18 @@ function deleteLine() {
   _saveMemeToStorage();
 }
 
+function changeAlign(value) {
+  gMeme.lines[gMeme.selectedLineIdx].textAlign = value;
+  console.log(gMeme.lines[gMeme.selectedLineIdx]);
+  _saveMemeToStorage();
+}
+
+function changeFontStyle(value) {
+  gMeme.lines[gMeme.selectedLineIdx].fontStyle = value;
+  console.log(gMeme.lines[gMeme.selectedLineIdx]);
+  _saveMemeToStorage();
+}
+
 function _createMeme(value) {
   gMeme = {
     selectedImgId: value,
@@ -97,6 +109,7 @@ function _createMeme(value) {
         fontSize: 20,
         TextAlign: "center",
         TextColor: "red",
+        fontStyle: "impact",
       },
     ],
   };
@@ -109,6 +122,7 @@ function _createLine() {
     fontSize: 20,
     textAlign: "center",
     textColor: "white",
+    fontStyle: "impact",
   };
 
   return newLine;

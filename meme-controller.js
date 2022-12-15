@@ -23,7 +23,10 @@ function renderText() {
         gElCanvas.width / 2,
         50,
         meme.lines[0].fontColor,
-        meme.lines[0].fontSize
+        meme.lines[0].fontSize,
+        meme.lines[0].textAlign,
+        meme.lines[0].fontStyle
+
       );
     } else if (i === 1) {
       drawText(
@@ -31,7 +34,9 @@ function renderText() {
         gElCanvas.width / 2,
         gElCanvas.height - 50,
         meme.lines[1].fontColor,
-        meme.lines[1].fontSize
+        meme.lines[1].fontSize,
+        meme.lines[1].textAlign,
+        meme.lines[1].fontStyle
       );
     } else {
       drawText(
@@ -39,18 +44,20 @@ function renderText() {
         gElCanvas.width / 2,
         gElCanvas.height / 2,
         meme.lines[i].fontColor,
-        meme.lines[i].fontSize
+        meme.lines[i].fontSize,
+        meme.lines[i].textAlign,
+        meme.lines[i].fontStyle
       );
     }
   }
 }
 
-function drawText(text, x, y, color, size) {
+function drawText(text, x, y, color, size, align, font) {
   gCtx.lineWidth = 1;
   gCtx.strokeStyle = "black";
   gCtx.fillStyle = color;
-  gCtx.font = `${size}px impact`;
-  gCtx.textAlign = "center"; // shift to end and start
+  gCtx.font = `${size}px ${font}`;
+  gCtx.textAlign = `${align}`; // shift to end and start
   gCtx.textBaseline = "middle";
   // gCtx.lineJoin = 'round'
 
@@ -98,3 +105,14 @@ function onDeleteLine() {
   deleteLine();
   renderMeme();
 }
+
+function onChangeAlign(value) {
+  console.log(value);
+  changeAlign(value);
+  renderMeme();
+}
+function onChangeFontStyle(value) {
+  changeFontStyle(value)
+  renderMeme();
+}
+
