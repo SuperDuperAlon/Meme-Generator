@@ -90,10 +90,10 @@ function changeFontStyle(value) {
 }
 
 function moveLine(value) {
-  var currLine =  gMeme.lines[gMeme.selectedLineIdx]
-  currLine.position.y = currLine.position.y + value
-console.log(currLine.position.y);
-_saveMemeToStorage();
+  var currLine = gMeme.lines[gMeme.selectedLineIdx];
+  currLine.position.y = currLine.position.y + value;
+  console.log(currLine.position.y);
+  _saveMemeToStorage();
 }
 
 function highlightLine() {
@@ -102,6 +102,7 @@ function highlightLine() {
 }
 
 function _createMeme(value) {
+  console.log(value);
   gMeme = {
     selectedImgId: value,
     selectedLineIdx: 0,

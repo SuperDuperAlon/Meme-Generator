@@ -5,16 +5,15 @@ let gCtx;
 let gIsSelected = false;
 
 function onEditor() {
-
-  document.querySelector('.gallery').style.display = 'none';
-  document.querySelector('.editor').style.display = 'flex';
+  document.querySelector(".gallery").style.display = "none";
+  document.querySelector(".editor").style.display = "flex";
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
-  renderMeme();
 }
 
 function renderMeme() {
   var meme = getMeme();
+  console.log(meme);
   drawImg(meme.selectedImgId);
 }
 
@@ -97,6 +96,7 @@ function onChangeColor(value) {
 
 function onChangeFontSize(num) {
   setFontSize(num);
+    gIsSelected = false;
   renderMeme();
 }
 
@@ -107,6 +107,7 @@ function onAddLine() {
 
 function onSwitchLine() {
   switchLine();
+    gIsSelected = false;
   highlightLine();
   renderMeme();
 }
@@ -119,6 +120,7 @@ function onDeleteLine() {
 
 function onChangeAlign(value) {
   changeAlign(value);
+  gIsSelected = false;
   renderMeme();
 }
 
@@ -128,23 +130,14 @@ function onChangeFontStyle(value) {
 }
 
 function onMoveLine(val) {
-  moveLine(val) 
-  renderMeme()
+  moveLine(val);
+  renderMeme();
 }
 
 function renderRecEditor() {
   if (!gIsSelected) return;
   var meme = getMeme();
   var currLine = meme.lines[meme.selectedLineIdx];
-  console.log(currLine);
-  console.log(
-    currLine.position.x -
-      10 -
-      (currLine.txt.length * 0.5 * currLine.fontSize) / 2,
-    currLine.position.y - 1 * currLine.fontSize,
-    currLine.txt.length * (0.55 * currLine.fontSize),
-    1.4 * currLine.fontSize
-  );
   if (currLine.textAlign === "end") {
     drawRect(
       currLine.position.x - 20 - currLine.txt.length * 0.5 * currLine.fontSize,
@@ -174,17 +167,20 @@ function renderRecEditor() {
 }
 
 function drawRect(x, y, width, height) {
+  if (!gIsSelected) gCtx.clearRect(x, y, width, height);
   gCtx.beginPath();
   gCtx.rect(x, y, width, height);
   gCtx.strokeStyle = "#ffffff";
   gCtx.fillRect(x, y, 5, 5);
   gCtx.fillStyle = "#ffffff";
   gCtx.stroke();
+  // 
+
 }
 
-function onDownloadImage(elLink) {
+function onDownloadImg(elLink) {
   gIsSelected = false;
-  console.log("dk");
+  renderMeme();
   const imgContent = gElCanvas.toDataURL("image/jpeg"); // image/jpeg the default format
   elLink.href = imgContent;
 }
