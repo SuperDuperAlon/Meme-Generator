@@ -31,28 +31,22 @@
       </div>
       <div class="control-box">
         <div class="controllers">
-          <input
-            class="text-editor"
-            type="text"
-            placeholder="Add your text here"
-            onkeypress="onCreateInput(this.value)"
-          />
-          <div class="moveLinesButtons">
-            <button onclick="onMoveLine(-3)">moveup</button>
-            <button onclick="onMoveLine(+3)">moveDown</button>
+          <div class="text-editor">
+            <input
+              class="text-input"
+              type="text"
+              placeholder="Add your text here"
+              onkeypress="onCreateInput(this.value)"
+            />
           </div>
 
           <div class="line-editor">
-            <input
-              class="color-editor"
-              type="color"
-              name="color"
-              id="color"
-              value="#ffffff"
-              onchange="onChangeColor(this.value)"
-            />
+            <div class="move-buttons">
+              <button onclick="onMoveLine(-3)"><i class="fa-solid fa-arrow-up"></i></button>
+              <button onclick="onMoveLine(+3)"><i class="fa-solid fa-arrow-down"></i></button>
+            </div>
             <div class="switch-button-editor">
-              <button onclick="onSwitchLine()">Switch</button>
+              <button onclick="onSwitchLine()"><i class="fa-solid fa-arrows-cross"></i></button>
             </div>
             <div class="add-line-editor">
               <button onclick="onAddLine()">
@@ -67,8 +61,8 @@
           </div>
           <div class="edit-box">
             <div class="font-size-editor">
-              <button onclick="onChangeFontSize(+1)">+</button>
-              <button onclick="onChangeFontSize(-1)">-</button>
+              <button onclick="onChangeFontSize(+1)"><div class="a-class">A+</div></button>
+              <button onclick="onChangeFontSize(-1)"><div class="a-class">A-</div></button>
             </div>
             <div class="text-align-editor">
               <button onclick="onChangeAlign('end')">
@@ -82,13 +76,21 @@
               </button>
             </div>
           </div>
-          <div class="font-style-editor">
-            <select name="" id="" onchange="onChangeFontStyle(this.value)">
-              <option value="impact">Impact</option>
-              <option value="arial">Arial</option>
-              <option value="serif">Serif</option>
-              <option value="sans-serif">Sans-Serif</option>
-            </select>
+          <div class="font-styling">
+              <select class="font-style-editor" name="" id="" onchange="onChangeFontStyle(this.value)">
+                <option value="impact">Impact</option>
+                <option value="arial">Arial</option>
+                <option value="serif">Serif</option>
+                <option value="sans-serif">Sans-Serif</option>
+            </div>
+            <input
+              class="color-editor"
+              type="color"
+              name="color"
+              id="color"
+              value="#ffffff"
+              onchange="onChangeColor(this.value)"
+            />
           </div>
           <div class="share-editor">
             <button>

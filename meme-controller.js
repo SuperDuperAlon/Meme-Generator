@@ -9,7 +9,12 @@ function onEditor() {
   document.querySelector(".editor").style.display = "flex";
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
+  resizeCanvas()
 }
+
+window.addEventListener('resize', () => {
+  resizeCanvas()
+})
 
 function renderMeme() {
   var meme = getMeme();
@@ -79,6 +84,12 @@ function drawImg(imgId) {
     renderText();
     renderRecEditor();
   };
+}
+
+function resizeCanvas() {
+  const elContainer = document.querySelector('.canvas-container')
+  elContainer.width  = window.innerWidth;
+  elContainer.height = window.innerHeight;
 }
 
 function onCreateInput(value) {
