@@ -1,6 +1,8 @@
 "use strict";
 
 function onGallery() {
+  document.querySelector('.editor').style.display = 'none'
+    document.querySelector('.gallery').style.display = 'grid ';
   renderGallery();
 }
 

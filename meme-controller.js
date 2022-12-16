@@ -5,6 +5,9 @@ let gCtx;
 let gIsSelected = false;
 
 function onEditor() {
+
+  document.querySelector('.gallery').style.display = 'none';
+  document.querySelector('.editor').style.display = 'flex';
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
   renderMeme();

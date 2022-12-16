@@ -2,5 +2,5 @@
 
 function onInit() {
     onGallery()
-    onEditor()
+    // onEditor()
 }
