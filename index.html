@@ -30,71 +30,81 @@
         <canvas class="canvas" id="canvas" width="400" height="400"></canvas>
       </div>
       <div class="control-box">
-        <input
-          class="text-editor"
-          type="text"
-          placeholder="Add your text here"
-          onkeypress="onCreateInput(this.value)"
-        />
+        <div class="controllers">
 
-        <input
-          class="color-editor"
-          type="color"
-          name="color"
-          id="color"
-          value="#ffffff"
-          onchange="onChangeColor(this.value)"
-        />
+          <input
+            class="text-editor"
+            type="text"
+            placeholder="Add your text here"
+            onkeypress="onCreateInput(this.value)"
+          />
+                    <div class="moveLinesButtons">
+            <button onclick="onMoveLine(-3)">moveup</button>
+            <button onclick="onMoveLine(+3)">moveDown</button>
 
-        <div class="line-editor">
-          <div class="switch-button-editor">
-            <button onclick="onSwitchLine()">Switch</button>
           </div>
-          <div class="add-line-editor">
-            <button onclick="onAddLine()">
-              <i class="fa-solid fa-plus"></i>
+
+          <div class="line-editor">
+            <input
+              class="color-editor"
+              type="color"
+              name="color"
+              id="color"
+              value="#ffffff"
+              onchange="onChangeColor(this.value)"
+            />
+            <div class="switch-button-editor">
+              <button onclick="onSwitchLine()">Switch</button>
+            </div>
+            <div class="add-line-editor">
+              <button onclick="onAddLine()">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+            <div class="delete-button-editor">
+              <button onclick="onDeleteLine()">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+          <div class="edit-box">
+            <div class="font-size-editor">
+              <button onclick="onChangeFontSize(+1)">+</button>
+              <button onclick="onChangeFontSize(-1)">-</button>
+            </div>
+            <div class="text-align-editor">
+              <button onclick="onChangeAlign('end')">
+                <i class="fa-solid fa-align-left"></i>
+              </button>
+              <button onclick="onChangeAlign('center')">
+                <i class="fa-solid fa-align-center"></i>
+              </button>
+              <button onclick="onChangeAlign('start')">
+                <i class="fa-solid fa-align-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="font-style-editor">
+            <select name="" id="" onchange="onChangeFontStyle(this.value)">
+              <option value="impact">Impact</option>
+              <option value="arial">Arial</option>
+              <option value="serif">Serif</option>
+              <option value="sans-serif">Sans-Serif</option>
+            </select>
+          </div>
+          <div class="share-editor">
+            <button>
+              <a
+                href="#"
+                class="btn"
+                onclick="downloadImg(this)"
+                download="my-img.jpg"
+                >Download</a
+              >
             </button>
-          </div>
-          <div class="delete-button-editor">
-            <button onclick="onDeleteLine()">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
+            <button onclick="onShareFb()">Share on facebook</button>
           </div>
         </div>
-
-        <div class="font-style-editor">
-          <select name="" id="" onchange="onChangeFontStyle(this.value)">
-            <option value="impact">Impact</option>
-            <option value="arial">Arial</option>
-            <option value="serif">Serif</option>
-            <option value="sans-serif">Sans-Serif</option>
-          </select>
-        </div>
-        <div class="font-size-editor">
-          <button onclick="onChangeFontSize(+1)">+</button>
-          <button onclick="onChangeFontSize(-1)">-</button>
-        </div>
-        <div class="text-align-editor">
-          <button onclick="onChangeAlign('end')">
-            <i class="fa-solid fa-align-left"></i>
-          </button>
-          <button onclick="onChangeAlign('center')">
-            <i class="fa-solid fa-align-center"></i>
-          </button>
-          <button onclick="onChangeAlign('start')">
-            <i class="fa-solid fa-align-right"></i>
-          </button>
-        </div>
-        <button>
-          <a
-            href="#"
-            class="btn"
-            onclick="downloadImg(this)"
-            download="my-img.jpg"
-            >Download</a
-          >
-        </button>
-        <button onclick="onShareFb()">Share on facebook</button>
       </div>
     </section>
 

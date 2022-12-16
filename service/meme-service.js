@@ -36,12 +36,6 @@ function getMeme() {
 function getImages() {
   return gImgs;
 }
-
-// function getMemeById(memeId) {
-//   var meme = gMeme.find((meme) => memeId === meme.selectedImgId);
-//   return meme;
-// }
-
 function setTextLine(inputValue) {
   var meme = getMeme();
   meme.lines[meme.selectedLineIdx].txt = `${inputValue}`;
@@ -76,7 +70,6 @@ function switchLine() {
   if (gMeme.selectedLineIdx === gMeme.lines.length) {
     gMeme.selectedLineIdx = 0;
   }
-
   _saveMemeToStorage();
 }
 
@@ -96,6 +89,18 @@ function changeFontStyle(value) {
   _saveMemeToStorage();
 }
 
+function moveLine(value) {
+  var currLine =  gMeme.lines[gMeme.selectedLineIdx]
+  currLine.position.y = currLine.position.y + value
+console.log(currLine.position.y);
+_saveMemeToStorage();
+}
+
+function highlightLine() {
+  var currLine = gMeme.selectedLineIdx;
+  console.log(currLine);
+}
+
 function _createMeme(value) {
   gMeme = {
     selectedImgId: value,
@@ -107,6 +112,21 @@ function _createMeme(value) {
         textAlign: "center",
         textColor: "white",
         fontStyle: "impact",
+        position: {
+          x: gElCanvas.width / 2,
+          y: 50,
+        },
+      },
+      {
+        txt: "Add Text Here",
+        fontSize: 20,
+        textAlign: "center",
+        textColor: "white",
+        fontStyle: "impact",
+        position: {
+          x: gElCanvas.width / 2,
+          y: gElCanvas.height - 50,
+        },
       },
     ],
   };
@@ -120,6 +140,10 @@ function _createLine() {
     textAlign: "center",
     textColor: "white",
     fontStyle: "impact",
+    position: {
+      x: gElCanvas.width / 2,
+      y: gElCanvas.height / 2,
+    },
   };
 
   return newLine;

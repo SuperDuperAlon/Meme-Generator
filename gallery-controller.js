@@ -20,6 +20,7 @@ function renderGallery() {
 }
 
 function onImageSelect(id) {
+  gIsSelected = false;
   setImg(id);
   renderMeme();
 }

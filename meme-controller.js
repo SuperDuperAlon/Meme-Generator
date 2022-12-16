@@ -2,6 +2,7 @@
 
 let gElCanvas;
 let gCtx;
+let gIsSelected = false;
 
 function onEditor() {
   gElCanvas = document.getElementById("canvas");
@@ -20,8 +21,8 @@ function renderText() {
     if (i === 0) {
       drawText(
         meme.lines[0].txt,
-        gElCanvas.width / 2,
-        50,
+        meme.lines[0].position.x,
+        meme.lines[0].position.y,
         meme.lines[0].textColor,
         meme.lines[0].fontSize,
         meme.lines[0].textAlign,
@@ -30,8 +31,8 @@ function renderText() {
     } else if (i === 1) {
       drawText(
         meme.lines[1].txt,
-        gElCanvas.width / 2,
-        gElCanvas.height - 50,
+        meme.lines[1].position.x,
+        meme.lines[1].position.y,
         meme.lines[1].textColor,
         meme.lines[1].fontSize,
         meme.lines[1].textAlign,
@@ -40,8 +41,8 @@ function renderText() {
     } else {
       drawText(
         meme.lines[i].txt,
-        gElCanvas.width / 2,
-        gElCanvas.height / 2,
+        meme.lines[i].position.x,
+        meme.lines[i].position.y,
         meme.lines[i].textColor,
         meme.lines[i].fontSize,
         meme.lines[i].textAlign,
@@ -61,9 +62,11 @@ function drawText(text, x, y, color, size, align, font) {
   // gCtx.lineJoin = 'round'
 
   // multiline https://codepen.io/nishiohirokazu/pen/jjNyye
-
+  // var lineHeight = size * 1.286 * 1.5;
+  // var textWidth = gCtx.measureText(text).width;
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
+  // gCtx.strokeRect(x - textWidth / 2, y, textWidth + 50, lineHeight);
 }
 // memeTxt, memeColor, memeFontSize
 function drawImg(imgId) {
@@ -72,16 +75,20 @@ function drawImg(imgId) {
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
     renderText();
+    renderRecEditor();
   };
 }
 
 function onCreateInput(value) {
+  gIsSelected = true;
   setTextLine(value);
   renderMeme();
 }
 
 function onChangeColor(value) {
+  gIsSelected = true;
   setColor(value);
+  gIsSelected = false;
   renderMeme();
 }
 
@@ -97,51 +104,104 @@ function onAddLine() {
 
 function onSwitchLine() {
   switchLine();
+  highlightLine();
   renderMeme();
 }
 
 function onDeleteLine() {
   deleteLine();
+  gIsSelected = false;
   renderMeme();
 }
 
 function onChangeAlign(value) {
-  console.log(value);
   changeAlign(value);
   renderMeme();
 }
+
 function onChangeFontStyle(value) {
   changeFontStyle(value);
   renderMeme();
 }
 
+function onMoveLine(val) {
+  moveLine(val) 
+  renderMeme()
+}
+
+function renderRecEditor() {
+  if (!gIsSelected) return;
+  var meme = getMeme();
+  var currLine = meme.lines[meme.selectedLineIdx];
+  console.log(currLine);
+  console.log(
+    currLine.position.x -
+      10 -
+      (currLine.txt.length * 0.5 * currLine.fontSize) / 2,
+    currLine.position.y - 1 * currLine.fontSize,
+    currLine.txt.length * (0.55 * currLine.fontSize),
+    1.4 * currLine.fontSize
+  );
+  if (currLine.textAlign === "end") {
+    drawRect(
+      currLine.position.x - 20 - currLine.txt.length * 0.5 * currLine.fontSize,
+      currLine.position.y - 0.7 * currLine.fontSize,
+      currLine.txt.length * (0.75 * currLine.fontSize),
+      1.4 * currLine.fontSize
+    );
+  }
+  if (currLine.textAlign === "center") {
+    drawRect(
+      currLine.position.x -
+        10 -
+        (currLine.txt.length * 0.5 * currLine.fontSize) / 2,
+      currLine.position.y - 0.7 * currLine.fontSize,
+      currLine.txt.length * (0.75 * currLine.fontSize),
+      1.4 * currLine.fontSize
+    );
+  }
+  if (currLine.textAlign === "start") {
+    drawRect(
+      currLine.position.x - 20,
+      currLine.position.y - 0.7 * currLine.fontSize,
+      currLine.txt.length * (0.75 * currLine.fontSize),
+      1.4 * currLine.fontSize
+    );
+  }
+}
+
+function drawRect(x, y, width, height) {
+  gCtx.beginPath();
+  gCtx.rect(x, y, width, height);
+  gCtx.strokeStyle = "#ffffff";
+  gCtx.fillRect(x, y, 5, 5);
+  gCtx.fillStyle = "#ffffff";
+  gCtx.stroke();
+}
+
 function onDownloadImage(elLink) {
+  gIsSelected = false;
   console.log("dk");
   const imgContent = gElCanvas.toDataURL("image/jpeg"); // image/jpeg the default format
   elLink.href = imgContent;
 }
 
 function onShareFb() {
-  const imgDataUrl = gElCanvas.toDataURL("image/jpeg"); // Gets the canvas content as an image format
-
-  // A function to be called if request succeeds
+  gIsSelected = false;
+  const imgDataUrl = gElCanvas.toDataURL("image/jpeg");
   function onSuccess(uploadedImgUrl) {
-    // Encode the instance of certain characters in the url
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl);
     window.open(
       `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
     );
   }
-  // Send the image to the server
   doUploadImg(imgDataUrl, onSuccess);
 }
 
 function doUploadImg(imgDataUrl, onSuccess) {
-  // Pack the image for delivery
   const formData = new FormData();
   formData.append("img", imgDataUrl);
   console.log("formData:", formData);
-  // Send a post req with the image to the server
   fetch("//ca-upload.com/here/upload.php", { method: "POST", body: formData })
     .then((res) => res.text())
     .then((url) => {
