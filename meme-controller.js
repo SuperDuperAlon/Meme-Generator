@@ -96,7 +96,7 @@ function onChangeColor(value) {
 
 function onChangeFontSize(num) {
   setFontSize(num);
-    gIsSelected = false;
+  gIsSelected = false;
   renderMeme();
 }
 
@@ -107,7 +107,7 @@ function onAddLine() {
 
 function onSwitchLine() {
   switchLine();
-    gIsSelected = false;
+  gIsSelected = false;
   highlightLine();
   renderMeme();
 }
@@ -174,8 +174,7 @@ function drawRect(x, y, width, height) {
   gCtx.fillRect(x, y, 5, 5);
   gCtx.fillStyle = "#ffffff";
   gCtx.stroke();
-  // 
-
+  //
 }
 
 function onDownloadImg(elLink) {
