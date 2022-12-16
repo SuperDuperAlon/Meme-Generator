@@ -9,12 +9,8 @@ function onEditor() {
   document.querySelector(".editor").style.display = "flex";
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
-  resizeCanvas()
+  // resizeCanvas();
 }
-
-window.addEventListener('resize', () => {
-  resizeCanvas()
-})
 
 function renderMeme() {
   var meme = getMeme();
@@ -81,16 +77,18 @@ function drawImg(imgId) {
   elImg.src = `./assets/images/${imgId}.jpg`;
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+    // resizeCanvas();
     renderText();
     renderRecEditor();
   };
 }
 
-function resizeCanvas() {
-  const elContainer = document.querySelector('.canvas-container')
-  elContainer.width  = window.innerWidth;
-  elContainer.height = window.innerHeight;
-}
+// function resizeCanvas() {
+//   const elContainer = document.querySelector(".canvas-container");
+//   console.log(elContainer.offsetWidth, gElCanvas.width);
+//   gElCanvas.width = elContainer.offsetWidth;
+//   gElCanvas.height = elContainer.offsetHeight;
+// }
 
 function onCreateInput(value) {
   gIsSelected = true;

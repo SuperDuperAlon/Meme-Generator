@@ -5,8 +5,17 @@
 
 /* vars */
 
+
 /* bp */
 :root {
+    /* pallete */
+    --yellow: #FFE15D;
+    --orange: #F49D1A;
+    --red: #DC3535;
+    --purple: #B01E68;
+
+
+    /* sizes */
     --s: 600px;
     --m: 900px;
     --l: 1060px;
@@ -36,11 +45,11 @@
 
 
 /* basicx */
-
+/* FFE15D */
 body {
     margin: 0;
     font-family: assistant;
-    background-color: rgb(255, 241, 241);
+    background-color: hsl(49, 100%, 92%);
 }
 
 .main-layout>*:not(.full) {
@@ -69,7 +78,6 @@ p {
     margin: 0 0 1em;
 }
 
-
 img {
     max-width: 100%;
     display: block;
@@ -80,8 +88,9 @@ button {
     cursor: pointer;
     font-size: 1em;
 }
-button > * {
-margin: auto;
+
+button>* {
+    margin: auto;
 }
 
 /* helpers */
@@ -93,18 +102,18 @@ margin: auto;
 }
 
 .a-class {
-/* Style for "A+" */
-color: #22252c;
-font-size: 1.25rem;
-letter-spacing: normal;
-line-height: normal;
-text-transform: uppercase;
-font-weight: bold;
-margin: auto;
-/* Text style for "A, +" */
-font-style: normal;
-letter-spacing: normal;
-line-height: normal;
+    /* Style for "A+" */
+    color: #22252c;
+    font-size: 1.25rem;
+    letter-spacing: normal;
+    line-height: normal;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: auto;
+    /* Text style for "A, +" */
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
 }
 
 /* components */
@@ -112,7 +121,7 @@ line-height: normal;
 /* Header */
 
 header {
-    background-color: crimson;
+    background-color: var(--red);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -139,24 +148,24 @@ nav ul {
 }
 
 header a {
-    color: beige;
+    color: var(--yellow);
     font-size: 1.25rem;
-    padding: 1.7rem;
+    padding:1.7rem;
 }
 
 
 header a:hover {
-    color: black;
+    color: white;
     font-size: 1.25rem;
     padding: 1.7rem;
-    background-color: white;
+    background-color: var(--orange);
 }
 
 header a:active {
     color: black;
     font-size: 1.25rem;
-    padding: 1.8rem;
-    background-color: greenyellow;
+    padding: 1.7rem;
+    background-color: var(--purple);
 }
 
 /* Gallery */
@@ -205,8 +214,7 @@ header a:active {
 /* Editor */
 .editor {
     align-items: center;
-    justify-content: space-between;
-    width: 70%;
+    justify-content: space-around;
     height: 80vh;
     padding: 3rem;
     display: flex;
@@ -227,44 +235,46 @@ header a:active {
 }
 
 .control-box {
-    background-color: crimson;
-    width: 40%;
-    height: 80%;
+
     display: flex;
 
     padding: 0.5rem;
-    justify-content: center;
-    border: #b1631a 1px solid;
-    border-radius: 10px;
-    align-items: center;
+
+
+
 }
 
 .controllers {
+    border: #b1631a 1px solid;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 5rem 0;
-
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--orange);
 }
 
 .control-box button {
     border-radius: 10px;
     width: 2.5rem;
     height: 2.5rem;
-    background-color: white;
-    color: black;
-    border: 1px lightgreen solid;
+    background-color: var(--yellow);
+    color: --red;
+    border: 1px --red solid;
 
 }
 
 .control-box button:hover {
-    background-color: yellowgreen;
+    background-color: var(--purple);
     color: white;
 }
 
-.control-box button:active {
+/* .control-box button:active {
     background-color: white;
-    color: yellowgreen;
-}
+    color: var(--red);
+} */
 
 .text-editor {
     display: flex;
@@ -277,7 +287,7 @@ header a:active {
     font-size: 1.25rem;
     border-radius: 45px;
     padding: 0.5rem;
-    border: 1px lightgreen solid;
+    border: 1px --red solid;
     width: 90%;
     text-align: center;
 
@@ -371,11 +381,40 @@ header a:active {
 }
 
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
     .main-layout>*:not(.full) {
         max-width: var(--s);
         margin-left: auto;
         margin-right: auto;
+    }
+
+    header {
+        display: block;
+    }
+
+    .gallery {
+        width: 90%;
+        display: grid;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+    }
+
+    .editor {
+        align-items: center;
+        justify-content: space-between;
+        width: 70%;
+        height: 80vh;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .controllers {
+        background-color: #fff8d6;
+        border: none;
     }
 }
 
@@ -383,4 +422,5 @@ header a:active {
     .main-layout>*:not(.full) {
         max-width: var(--l);
     }
+
 }
