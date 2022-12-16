@@ -49,8 +49,8 @@ body {
 img {
     /* width: 100%; */
     object-fit: fill;
-    /* width: 100px;
-    height: 100px; */
+    width: 100px;
+    height: 100px;
 }
 
 h1,
@@ -126,7 +126,7 @@ header a {
 header a:hover {
     color: black;
     font-size: 1.25rem;
-    padding: 1.8rem;
+    padding: 1.7rem;
     background-color: white;
 }
 

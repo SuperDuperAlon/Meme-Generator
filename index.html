@@ -42,14 +42,13 @@
           type="color"
           name="color"
           id="color"
-          value="#fff"
+          value="#ffffff"
           onchange="onChangeColor(this.value)"
         />
 
         <div class="line-editor">
           <div class="switch-button-editor">
-            <button onclick="onSwitchLine(+1)">Switch Up</button>
-            <button onclick="onSwitchLine(-1)">Switch Down</button>
+            <button onclick="onSwitchLine()">Switch</button>
           </div>
           <div class="add-line-editor">
             <button onclick="onAddLine()">
@@ -76,16 +75,18 @@
           <button onclick="onChangeFontSize(-1)">-</button>
         </div>
         <div class="text-align-editor">
-          <button onclick="onChangeAlign('start')">
+          <button onclick="onChangeAlign('end')">
             <i class="fa-solid fa-align-left"></i>
           </button>
           <button onclick="onChangeAlign('center')">
             <i class="fa-solid fa-align-center"></i>
           </button>
-          <button onclick="onChangeAlign('end')">
+          <button onclick="onChangeAlign('start')">
             <i class="fa-solid fa-align-right"></i>
           </button>
         </div>
+        <button onclick="onDownloadImage()">Download</button>
+        <button onclick="onShare-fb()">Share on facebook</button>
       </div>
     </section>
 

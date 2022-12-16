@@ -22,7 +22,7 @@ function renderText() {
         meme.lines[0].txt,
         gElCanvas.width / 2,
         50,
-        meme.lines[0].fontColor,
+        meme.lines[0].textColor,
         meme.lines[0].fontSize,
         meme.lines[0].textAlign,
         meme.lines[0].fontStyle
@@ -33,7 +33,7 @@ function renderText() {
         meme.lines[1].txt,
         gElCanvas.width / 2,
         gElCanvas.height - 50,
-        meme.lines[1].fontColor,
+        meme.lines[1].textColor,
         meme.lines[1].fontSize,
         meme.lines[1].textAlign,
         meme.lines[1].fontStyle
@@ -43,7 +43,7 @@ function renderText() {
         meme.lines[i].txt,
         gElCanvas.width / 2,
         gElCanvas.height / 2,
-        meme.lines[i].fontColor,
+        meme.lines[i].textColor,
         meme.lines[i].fontSize,
         meme.lines[i].textAlign,
         meme.lines[i].fontStyle
@@ -96,8 +96,8 @@ function onAddLine() {
   renderMeme();
 }
 
-function onSwitchLine(val) {
-  switchLine(val);
+function onSwitchLine() {
+  switchLine();
   renderMeme();
 }
 

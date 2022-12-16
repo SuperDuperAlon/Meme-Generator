@@ -50,7 +50,7 @@ function setTextLine(inputValue) {
 }
 
 function setColor(inputValue) {
-  gMeme.lines[gMeme.selectedLineIdx].fontColor = `${inputValue}`;
+  gMeme.lines[gMeme.selectedLineIdx].textColor = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
 }
@@ -71,14 +71,12 @@ function addLine() {
   _saveMemeToStorage();
 }
 
-function switchLine(val) {
-  gMeme.selectedLineIdx = gMeme.selectedLineIdx + val;
-  if (gMeme.selectedLineIdx < 0) {
+function switchLine() {
+  gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
+  if (gMeme.selectedLineIdx === gMeme.lines.length) {
     gMeme.selectedLineIdx = 0;
   }
-  if (gMeme.selectedLineIdx > gMeme.lines.length) {
-    gMeme.selectedLineIdx = gMeme.lines.length;
-  }
+
   _saveMemeToStorage();
 }
 
@@ -89,7 +87,6 @@ function deleteLine() {
 
 function changeAlign(value) {
   gMeme.lines[gMeme.selectedLineIdx].textAlign = value;
-  console.log(gMeme.lines[gMeme.selectedLineIdx]);
   _saveMemeToStorage();
 }
 
@@ -107,8 +104,8 @@ function _createMeme(value) {
       {
         txt: "Add Text Here",
         fontSize: 20,
-        TextAlign: "center",
-        TextColor: "red",
+        textAlign: "center",
+        textColor: "white",
         fontStyle: "impact",
       },
     ],
