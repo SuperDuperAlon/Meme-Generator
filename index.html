@@ -85,8 +85,16 @@
             <i class="fa-solid fa-align-right"></i>
           </button>
         </div>
-        <button onclick="onDownloadImage()">Download</button>
-        <button onclick="onShare-fb()">Share on facebook</button>
+        <button>
+          <a
+            href="#"
+            class="btn"
+            onclick="downloadImg(this)"
+            download="my-img.jpg"
+            >Download</a
+          >
+        </button>
+        <button onclick="onShareFb()">Share on facebook</button>
       </div>
     </section>
 
