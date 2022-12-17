@@ -2,21 +2,18 @@
 
 const KEY_STORAGE = "memeDB";
 var gMeme;
-var gLineIdx = 0;
-
-console.log(gMeme);
 
 var gImgs = [
-  { id: 1, url: "./assets/images/1.jpg", keywords: ["funny", "cat"] },
-  { id: 2, url: "./assets/images/2.jpg", keywords: ["funny", "cat"] },
-  { id: 3, url: "./assets/images/3.jpg", keywords: ["funny", "cat"] },
-  { id: 4, url: "./assets/images/4.jpg", keywords: ["funny", "cat"] },
-  { id: 5, url: "./assets/images/5.jpg", keywords: ["funny", "cat"] },
-  { id: 6, url: "./assets/images/6.jpg", keywords: ["funny", "cat"] },
-  { id: 7, url: "./assets/images/7.jpg", keywords: ["funny", "cat"] },
-  { id: 8, url: "./assets/images/8.jpg", keywords: ["funny", "cat"] },
+  { id: 1, url: "./assets/images/1.jpg", keywords: ["trump", "politics"] },
+  { id: 2, url: "./assets/images/2.jpg", keywords: ["puppies", "cute", "dog"] },
+  { id: 3, url: "./assets/images/3.jpg", keywords: ["baby", "cute", "dog"] },
+  { id: 4, url: "./assets/images/4.jpg", keywords: ["cute", "cat"] },
+  { id: 5, url: "./assets/images/5.jpg", keywords: ["funny", "baby"] },
+  { id: 6, url: "./assets/images/6.jpg", keywords: ["aliens", "funny"] },
+  { id: 7, url: "./assets/images/7.jpg", keywords: ["funny", "baby"] },
+  { id: 8, url: "./assets/images/8.jpg", keywords: ["movie", "funny"] },
   { id: 9, url: "./assets/images/9.jpg", keywords: ["funny", "cat"] },
-  { id: 10, url: "./assets/images/10.jpg", keywords: ["funny", "cat"] },
+  { id: 10, url: "./assets/images/10.jpg", keywords: ["baby", "funny"] },
   { id: 11, url: "./assets/images/11.jpg", keywords: ["funny", "cat"] },
   { id: 12, url: "./assets/images/12.jpg", keywords: ["funny", "cat"] },
   { id: 13, url: "./assets/images/13.jpg", keywords: ["funny", "cat"] },
@@ -56,7 +53,6 @@ function setFontSize(val) {
 }
 
 function setImg(value) {
-  console.log(value);
   _createMeme(value);
 }
 
@@ -85,20 +81,13 @@ function changeAlign(value) {
 
 function changeFontStyle(value) {
   gMeme.lines[gMeme.selectedLineIdx].fontStyle = value;
-  console.log(gMeme.lines[gMeme.selectedLineIdx]);
   _saveMemeToStorage();
 }
 
 function moveLine(value) {
   var currLine = gMeme.lines[gMeme.selectedLineIdx];
   currLine.position.y = currLine.position.y + value;
-  console.log(currLine.position.y);
   _saveMemeToStorage();
-}
-
-function highlightLine() {
-  var currLine = gMeme.selectedLineIdx;
-  console.log(currLine);
 }
 
 function _createMeme(value) {

@@ -9,17 +9,16 @@ function onEditor() {
   document.querySelector(".editor").style.display = "flex";
   gElCanvas = document.getElementById("canvas");
   gCtx = gElCanvas.getContext("2d");
-  // resizeCanvas();
 }
 
 function renderMeme() {
   var meme = getMeme();
-  console.log(meme);
   drawImg(meme.selectedImgId);
 }
 
 function renderText() {
   var meme = getMeme();
+  console.log(meme);
   for (var i = 0; i < meme.lines.length; i++) {
     if (i === 0) {
       drawText(
@@ -60,53 +59,20 @@ function drawText(text, x, y, color, size, align, font) {
   gCtx.strokeStyle = "black";
   gCtx.fillStyle = color;
   gCtx.font = `${size}px ${font}`;
-  gCtx.textAlign = `${align}`; // shift to end and start
+  gCtx.textAlign = `${align}`;
   gCtx.textBaseline = "middle";
-  // gCtx.lineJoin = 'round'
-
-  // multiline https://codepen.io/nishiohirokazu/pen/jjNyye
-  // var lineHeight = size * 1.286 * 1.5;
-  // var textWidth = gCtx.measureText(text).width;
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
-  // gCtx.strokeRect(x - textWidth / 2, y, textWidth + 50, lineHeight);
 }
-// memeTxt, memeColor, memeFontSize
 function drawImg(imgId) {
   const elImg = new Image();
   elImg.src = `./assets/images/${imgId}.jpg`;
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    // resizeCanvas();
     renderText();
     renderRecEditor();
   };
 }
-
-// shareButton.addEventListener('click', event => {
-//   if (navigator.share) {
-//    navigator.share({
-//       title: 'WebShare API Demo',
-//       url: 'https://codepen.io/ayoisaiah/pen/YbNazJ'
-//     }).then(() => {
-//       console.log('Thanks for sharing!');
-//     })
-//     .catch(console.error);
-//     } else {
-//         shareDialog.classList.add('is-open');
-//     }
-// });
-
-// closeButton.addEventListener('click', event => {
-//   shareDialog.classList.remove('is-open');
-// });
-
-// function resizeCanvas() {
-//   const elContainer = document.querySelector(".canvas-container");
-//   console.log(elContainer.offsetWidth, gElCanvas.width);
-//   gElCanvas.width = elContainer.offsetWidth;
-//   gElCanvas.height = elContainer.offsetHeight;
-// }
 
 function onCreateInput(value) {
   gIsSelected = true;
@@ -140,7 +106,6 @@ function onAddLine() {
 function onSwitchLine() {
   switchLine();
   gIsSelected = false;
-  highlightLine();
   renderMeme();
 }
 
@@ -199,14 +164,17 @@ function renderRecEditor() {
 }
 
 function drawRect(x, y, width, height) {
-  if (!gIsSelected) gCtx.clearRect(x, y, width, height);
-  gCtx.beginPath();
-  gCtx.rect(x, y, width, height);
-  gCtx.strokeStyle = "#ffffff";
-  gCtx.fillRect(x, y, 5, 5);
-  gCtx.fillStyle = "#ffffff";
-  gCtx.stroke();
-  //
+  if (!gIsSelected) {
+    gCtx.clearPath();
+  } else {
+    gCtx.beginPath();
+    gCtx.rect(x, y, width, height);
+    gCtx.strokeStyle = "#ffffff";
+    gCtx.fillRect(x, y, 5, 5);
+    gCtx.fillStyle = "#ffffff";
+    gCtx.stroke();
+    gIsSelected = false;
+  }
 }
 
 function onDownloadImg(elLink) {
@@ -231,11 +199,9 @@ function onShareFb() {
 function doUploadImg(imgDataUrl, onSuccess) {
   const formData = new FormData();
   formData.append("img", imgDataUrl);
-  console.log("formData:", formData);
   fetch("//ca-upload.com/here/upload.php", { method: "POST", body: formData })
     .then((res) => res.text())
     .then((url) => {
-      console.log("url:", url);
       onSuccess(url);
     });
 }

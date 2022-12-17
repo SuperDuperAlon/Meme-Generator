@@ -25,6 +25,7 @@
       <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
     <section class="gallery">
+      <!-- <input type="text"> -->
       <div class="grid-container"></div>
     </section>
     <section class="editor">
@@ -38,7 +39,7 @@
               class="text-input"
               type="text"
               placeholder="Add your text here"
-              onkeypress="onCreateInput(this.value)"
+              onkeydown="onCreateInput(this.value)"
             />
           </div>
 
@@ -113,16 +114,17 @@
             </button>
           </div>
           <div class="share-editor">
-            <button>
-              <a
-                href="#"
-                class="download-btn"
-                onclick="onDownloadImg(this)"
-                download="my-img.jpg"
-                ><i class="fa-solid fa-download"></i> Download</a
-              >
-            </button>
-            <!-- <button onclick="onShareFb()"><i class="fa-brands fa-square-facebook"></i></button> -->
+            <div class="download-btn">
+              <button>
+                <a
+                  href="#"
+                  class="download-btn"
+                  onclick="onDownloadImg(this)"
+                  download="my-img.jpg"
+                  ><i class="fa-solid fa-download"></i> Download</a
+                >
+              </button>
+            </div>
             <div class="web-share-api">
               <button class="web-share-api-btn" onclick="onWebApiShare()">
                 <i class="fa-solid fa-share-nodes"></i> Share
