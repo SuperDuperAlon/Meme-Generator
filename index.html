@@ -20,7 +20,6 @@
           <li><a href="#" onclick="onGallery()">Gallery</a></li>
           <li><a href="#">About</a></li>
         </ul>
-
       </nav>
     </header>
     <section class="gallery">
@@ -99,7 +98,7 @@
               <option value="serif">Serif</option>
               <option value="sans-serif">Sans-Serif</option>
             </select>
-            <button>
+            <button class="color-button">
               <input
                 class="color-editor"
                 type="color"
@@ -110,19 +109,23 @@
               />
               <i class="fa-solid fa-palette"></i>
             </button>
-            <!-- onclick="onOpenColorPicker()" -->
           </div>
           <div class="share-editor">
             <button>
               <a
                 href="#"
-                class="btn"
+                class="download-btn"
                 onclick="onDownloadImg(this)"
                 download="my-img.jpg"
-                ><i class="fa-solid fa-arrow-down-to-line"></i>Download</a
+                ><i class="fa-solid fa-download"></i> Download</a
               >
             </button>
-            <button onclick="onShareFb()">Share on facebook</button>
+            <!-- <button onclick="onShareFb()"><i class="fa-brands fa-square-facebook"></i></button> -->
+            <div class="web-share-api">
+              <button class="web-share-api-btn" onclick="onWebApiShare()">
+                <i class="fa-solid fa-share-nodes"></i> Share
+              </button>
+            </div>
           </div>
         </div>
       </div>

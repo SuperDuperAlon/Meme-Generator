@@ -243,3 +243,17 @@ function doUploadImg(imgDataUrl, onSuccess) {
 function toggleMenu() {
   document.body.classList.toggle("menu-open");
 }
+
+function onWebApiShare() {
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "Alon's Meme Generator",
+        url: "https://superduperalon.github.io/Meme-Generator/",
+      })
+      .then(() => {
+        console.log("thanks for share");
+      })
+      .catch(console.error);
+  }
+}
