@@ -83,6 +83,24 @@ function drawImg(imgId) {
   };
 }
 
+// shareButton.addEventListener('click', event => {
+//   if (navigator.share) {
+//    navigator.share({
+//       title: 'WebShare API Demo',
+//       url: 'https://codepen.io/ayoisaiah/pen/YbNazJ'
+//     }).then(() => {
+//       console.log('Thanks for sharing!');
+//     })
+//     .catch(console.error);
+//     } else {
+//         shareDialog.classList.add('is-open');
+//     }
+// });
+
+// closeButton.addEventListener('click', event => {
+//   shareDialog.classList.remove('is-open');
+// });
+
 // function resizeCanvas() {
 //   const elContainer = document.querySelector(".canvas-container");
 //   console.log(elContainer.offsetWidth, gElCanvas.width);
@@ -96,11 +114,16 @@ function onCreateInput(value) {
   renderMeme();
 }
 
+function onOpenColorPicker() {
+  document.querySelector(".color-editor").style.opacity = "100%";
+}
+
 function onChangeColor(value) {
   gIsSelected = true;
   setColor(value);
   gIsSelected = false;
   renderMeme();
+  document.querySelector(".color-editor").style.opacity = "0%";
 }
 
 function onChangeFontSize(num) {
@@ -215,4 +238,8 @@ function doUploadImg(imgDataUrl, onSuccess) {
       console.log("url:", url);
       onSuccess(url);
     });
+}
+
+function toggleMenu() {
+  document.body.classList.toggle("menu-open");
 }

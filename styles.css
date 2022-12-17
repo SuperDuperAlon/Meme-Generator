@@ -103,17 +103,9 @@ button>* {
 
 .a-class {
     /* Style for "A+" */
-    color: #22252c;
     font-size: 1.25rem;
-    letter-spacing: normal;
-    line-height: normal;
-    text-transform: uppercase;
     font-weight: bold;
-    margin: auto;
-    /* Text style for "A, +" */
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
+
 }
 
 /* components */
@@ -150,7 +142,7 @@ nav ul {
 header a {
     color: var(--yellow);
     font-size: 1.25rem;
-    padding:1.7rem;
+    padding: 1.7rem;
 }
 
 
@@ -166,6 +158,10 @@ header a:active {
     font-size: 1.25rem;
     padding: 1.7rem;
     background-color: var(--purple);
+}
+
+.menu-toggle-btn {
+    display: none;
 }
 
 /* Gallery */
@@ -319,6 +315,11 @@ header a:active {
     display: flex;
 }
 
+.switch-button-editor {
+    content: 'butt';
+    color: #22252c;
+}
+
 .edit-box {
     display: flex;
     flex-direction: row;
@@ -349,11 +350,9 @@ header a:active {
 }
 
 .color-editor {
-    background: none;
-    height: 1.75rem;
-    width: 30%;
-    margin: 0.5rem 0.25rem;
-    /* border: none; */
+    opacity: 0;
+    width: 100px;
+    position: absolute;
 }
 
 
@@ -392,9 +391,52 @@ header a:active {
         display: block;
     }
 
+    .menu-toggle-btn {
+        display: block;
+        background-color: var(--red);
+        border: none;
+        color: yellow;
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        height: 100vh;
+        background: rgb(255 255 255 / 80%);
+        border-inline-start: 1px solid #ccc;
+        min-width: 200px;
+        transform: translateX(100%);
+
+
+        transition: transform .6s, box-shadow .6s;
+    }
+    
+    body.menu-open nav ul {
+        transform: translateX(0);
+        box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
+    }
+
+    header nav a {
+        display: block;
+        text-align: center;
+        padding: 13px 10px;
+        border-bottom: 1px solid #ccc;
+        background-color: #fff;
+
+        transition: background-color .6s;
+    }
+
+    header nav a:hover {
+        background-color: var(--clr-1);
+    }
+
     .gallery {
         width: 90%;
         display: grid;
+        padding: 0.5rem
     }
 
     .grid-container {
@@ -416,6 +458,8 @@ header a:active {
         background-color: #fff8d6;
         border: none;
     }
+
+
 }
 
 @media (min-width: 1100px) {
