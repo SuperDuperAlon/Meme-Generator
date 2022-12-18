@@ -26,6 +26,11 @@
       <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
     <section class="gallery">
+      <input
+              type="input"
+              name="name"
+              onkeyup="onKeywordsFilter(this.value)"
+            />
       <div class="grid-container"></div>
     </section>
     <section class="editor">
@@ -140,6 +145,7 @@
 
     <script src="gallery-controller.js"></script>
     <script src="meme-controller.js"></script>
+    <script src="test.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -1,13 +1,14 @@
 "use strict";
 
 function onGallery() {
-  document.querySelector('.editor').style.display = 'none'
-    document.querySelector('.gallery').style.display = 'grid ';
+  document.querySelector(".editor").style.display = "none";
+  document.querySelector(".gallery").style.display = "grid ";
   renderGallery();
 }
 
 function renderGallery() {
   const images = getImages();
+  // const userInput = onKeywordsFilter()
   const elGallery = document.querySelector(".gallery .grid-container");
 
   var imageHTML = images
@@ -22,8 +23,12 @@ function renderGallery() {
 }
 
 function onImageSelect(id) {
-  gIsSelected = false;
-  onEditor()
+  onEditor();
   setImg(id);
   renderMeme();
+}
+
+function onKeywordsFilter(userInput) {
+  console.log(userInput);
+  setKeywordsFilter(userInput)
 }

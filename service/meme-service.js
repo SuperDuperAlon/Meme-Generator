@@ -31,10 +31,29 @@ function getMeme() {
 }
 
 function getImages() {
+  // gImages = setKeywordsFilter(userInput)
   return gImgs;
+  console.log(gImgs);
 }
+
+function setKeywordsFilter(userInput) {
+  console.log(userInput);
+  const images = gImgs;
+  const filteredData = images.filter((value) => {
+    const searchStr = userInput.toLowerCase();
+    const oneItemMatches = value.keywords.some((item) =>
+      item.toLowerCase().includes(searchStr)
+    );
+
+    return oneItemMatches;
+  });
+  console.log(filteredData);
+  return filteredData;
+}
+
 function setTextLine(inputValue) {
   var meme = getMeme();
+  console.log(meme.selectedLineIdx);
   meme.lines[meme.selectedLineIdx].txt = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
@@ -56,21 +75,21 @@ function setImg(value) {
   _createMeme(value);
 }
 
-function addLine() {
-  gMeme.lines.push(_createLine());
-  _saveMemeToStorage();
-}
-
 function switchLine() {
   gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
   if (gMeme.selectedLineIdx === gMeme.lines.length) {
     gMeme.selectedLineIdx = 0;
   }
+  console.log(gMeme.selectedLineIdx);
   _saveMemeToStorage();
 }
 
 function deleteLine() {
-  gMeme.lines.splice(gMeme.selectedLineIdxs, 1);
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+  gMeme.selectedLineIdx - 1;
+  if (gMeme.selectedLineIdx < 0) {
+    gMeme.selectedLineIdx = 0;
+  }
   _saveMemeToStorage();
 }
 
@@ -95,35 +114,28 @@ function _createMeme(value) {
   gMeme = {
     selectedImgId: value,
     selectedLineIdx: 0,
-    lines: [
-      {
-        txt: "Add Text Here",
-        fontSize: 20,
-        textAlign: "center",
-        textColor: "white",
-        fontStyle: "impact",
-        position: {
-          x: gElCanvas.width / 2,
-          y: 50,
-        },
-      },
-      {
-        txt: "Add Text Here",
-        fontSize: 20,
-        textAlign: "center",
-        textColor: "white",
-        fontStyle: "impact",
-        position: {
-          x: gElCanvas.width / 2,
-          y: gElCanvas.height - 50,
-        },
-      },
-    ],
+    lines: [],
   };
   _saveMemeToStorage();
 }
 
-function _createLine() {
+function addLine() {
+  gMeme.selectedLineIdx = gMeme.lines.length;
+  switch (gMeme.selectedLineIdx) {
+    case 0:
+      gMeme.lines.push(_createLine(gElCanvas.width / 2, 50));
+      break;
+    case 1:
+      gMeme.lines.push(_createLine(gElCanvas.width / 2, gElCanvas.height - 50));
+      break;
+    default:
+      gMeme.lines.push(_createLine(gElCanvas.width / 2, gElCanvas.height / 2));
+      break;
+  }
+  _saveMemeToStorage();
+}
+
+function _createLine(x, y) {
   var newLine = {
     txt: "Add Text Here",
     fontSize: 20,
@@ -131,8 +143,8 @@ function _createLine() {
     textColor: "white",
     fontStyle: "impact",
     position: {
-      x: gElCanvas.width / 2,
-      y: gElCanvas.height / 2,
+      x: x,
+      y: y,
     },
   };
 
