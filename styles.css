@@ -347,7 +347,7 @@ header a:active {
     width: 100%;
 }
 
-.share-editor> * {
+.share-editor>* {
     display: flex;
     flex-grow: 0.8;
     justify-content: space-around;
@@ -368,6 +368,60 @@ header a:active {
     text-decoration: none;
     color: white;
 }
+
+/* About Page */
+
+.about-page-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80vh;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.about-page-image{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.about-page-image img{
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+}
+
+.about-page-description {
+    width: 40%;
+}
+
+.about-page-description h1 {
+    font-size: 3rem;
+    margin-bottom: .8rem;
+}
+
+.about-page-description p {
+    font-size: 1.4rem;
+        margin-bottom: .8rem;
+}
+
+.about-page-description ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.about-page-description ul li{
+font-size: 1.5rem;
+        margin-right: .6rem;
+}
+
+.about-page-description ul li button{
+border: none;
+background-color: #fff8d6;
+    } 
+
 
 @media (min-width: 640px) and (max-width: 980px) {
 
@@ -501,7 +555,7 @@ header a:active {
         margin: 1rem;
     }
 
-    /* .text-input {
+    .text-input {
         font-size: 1.25rem;
         border-radius: 45px;
         padding: 0.5rem;
@@ -509,7 +563,7 @@ header a:active {
         width: 90%;
         text-align: center;
 
-    } */
+    }
 
     .line-editor {
         justify-content: center;
