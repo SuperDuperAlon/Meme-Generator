@@ -615,4 +615,38 @@ background-color: #fff8d6;
         flex-direction: row;
     }
 
+    .about-page-container {
+        display: flex;
+        flex-direction: column;
+    flex-flow: wrap-reverse;
+    }
+
+    .about-page-image{
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+    }
+    
+    .about-page-image img{
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .about-page-description {
+        width: 80%;
+    }
+    
+    .about-page-description h1 {
+        text-align: center;
+    }
+    
+    .about-page-description p {
+        text-align: center;
+    }
+    
+    .about-page-description ul {
+justify-content: center;
+    }
+    
 }
