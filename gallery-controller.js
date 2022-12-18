@@ -30,4 +30,5 @@ function onImageSelect(id) {
 
 function onKeywordsFilter(userInput) {
   setKeywordsFilter(userInput)
+    renderGallery();
 }

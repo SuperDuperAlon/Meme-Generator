@@ -20,13 +20,13 @@
       <nav>
         <ul class="clean-list">
           <li><a href="#" onclick="onGallery()">Gallery</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="https://codepen.io/jh3y/pen/LYNZwGm">About</a></li>
         </ul>
       </nav>
       <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
     <section class="gallery">
-      <input type="input" name="name" onchange="onKeywordsFilter(this.value)" />
+      <!-- <input type="input" name="name" onchange="onKeywordsFilter(this.value)" /> -->
       <div class="grid-container"></div>
     </section>
     <section class="editor">
@@ -120,6 +120,7 @@
                 <a
                   href="#"
                   class="download-btn"
+                  onmousedown="removeRectOutline()"
                   onclick="onDownloadImg(this)"
                   download="my-img.jpg"
                   ><i class="fa-solid fa-download"></i> Download</a

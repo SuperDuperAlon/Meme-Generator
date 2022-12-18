@@ -389,6 +389,9 @@ header a:active {
 
 
 @media (max-width: 640px) {
+
+
+
     .main-layout>*:not(.full) {
         margin-left: auto;
         margin-right: auto;
@@ -498,7 +501,7 @@ header a:active {
         margin: 1rem;
     }
 
-    .text-input {
+    /* .text-input {
         font-size: 1.25rem;
         border-radius: 45px;
         padding: 0.5rem;
@@ -506,7 +509,7 @@ header a:active {
         width: 90%;
         text-align: center;
 
-    }
+    } */
 
     .line-editor {
         justify-content: center;
@@ -542,6 +545,7 @@ header a:active {
         opacity: 0;
         width: 100px;
         position: absolute;
+        left: 100px;
     }
 
 

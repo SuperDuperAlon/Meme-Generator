@@ -2,6 +2,7 @@
 
 const KEY_STORAGE = "memeDB";
 var gMeme;
+var gFilterBy = "";
 
 var gImgs = [
   { id: 1, url: "./assets/images/1.jpg", keywords: ["trump", "politics"] },
@@ -31,22 +32,25 @@ function getMeme() {
 }
 
 function getImages() {
-  const images = gImgs;
-  // const input = gGalleryInput
-  // console.log(input);
-  // const images = gImgs.filter((value) => {
-  //   const searchStr = input.toLowerCase();
-  //   const oneItemMatches = value.keywords.some((item) =>
-  //     item.toLowerCase().includes(searchStr)
-  //   );
-  //   return oneItemMatches;
-  // });
+  console.log(gFilterBy);
+  const images = gImgs.filter((value) => {
+    const searchStr = gFilterBy.toLowerCase();
+    // 
+    console.log(searchStr);
+    const oneItemMatches = value.keywords.some((item) =>
+      item.toLowerCase().includes(searchStr)
+    );
+    console.log(oneItemMatches);
+    return oneItemMatches;
+
+  });
+  console.log(images);
   return images;
 }
 
 function setKeywordsFilter(userInput) {
-  gGalleryInput = userInput;
-  console.log(gGalleryInput);
+  gFilterBy = userInput;
+  console.log(gFilterBy);
 }
 // function setKeywordsFilter(userInput) {
 //   console.log(userInput);
@@ -65,15 +69,13 @@ function setKeywordsFilter(userInput) {
 
 function setTextLine(inputValue) {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   meme.lines[meme.selectedLineIdx].txt = `${inputValue}`;
-  _saveMemeToStorage(); 
+  _saveMemeToStorage();
   return meme;
 }
 
 function setColor(inputValue) {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   meme.lines[gMeme.selectedLineIdx].textColor = `${inputValue}`;
   _saveMemeToStorage();
   return gMeme;
@@ -81,7 +83,6 @@ function setColor(inputValue) {
 
 function setFontSize(val) {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   meme.lines[gMeme.selectedLineIdx].fontSize += val;
   _saveMemeToStorage();
   return meme;
@@ -93,7 +94,6 @@ function setImg(value) {
 
 function switchLine() {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   meme.selectedLineIdx = gMeme.selectedLineIdx + 1;
   if (meme.selectedLineIdx === gMeme.lines.length) {
     meme.selectedLineIdx = 0;
@@ -113,33 +113,20 @@ function deleteLine() {
 
 function changeAlign(value) {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   meme.lines[meme.selectedLineIdx].textAlign = value;
   _saveMemeToStorage();
 }
 
 function changeFontStyle(value) {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   meme.lines[meme.selectedLineIdx].fontStyle = value;
   _saveMemeToStorage();
 }
 
 function moveLine(value) {
   var meme = getMeme();
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   var currLine = meme.lines[meme.selectedLineIdx];
   currLine.position.y = currLine.position.y + value;
-  _saveMemeToStorage();
-}
-
-function _createMeme(value) {
-  console.log(value);
-  gMeme = {
-    selectedImgId: value,
-    selectedLineIdx: 0,
-    lines: [],
-  };
   _saveMemeToStorage();
 }
 
@@ -158,8 +145,17 @@ function addLine() {
       meme.lines.push(_createLine(gElCanvas.width / 2, gElCanvas.height / 2));
       break;
   }
-  meme.lines[meme.selectedLineIdx].isSelected = true;
   console.log(meme);
+  _saveMemeToStorage();
+}
+
+function _createMeme(value) {
+  console.log(value);
+  gMeme = {
+    selectedImgId: value,
+    selectedLineIdx: 0,
+    lines: [],
+  };
   _saveMemeToStorage();
 }
 
@@ -170,7 +166,6 @@ function _createLine(x, y) {
     textAlign: "center",
     textColor: "white",
     fontStyle: "impact",
-    isSelected: false,
     position: {
       x: x,
       y: y,

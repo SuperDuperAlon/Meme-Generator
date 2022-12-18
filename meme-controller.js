@@ -132,10 +132,13 @@ function drawRect() {
   }
 }
 
-function onDownloadImg(elLink) {
+function removeRectOutline() {
   gIsSelected = false;
   drawRect();
   renderMeme();
+}
+ 
+function onDownloadImg(elLink) {
   const imgContent = gElCanvas.toDataURL("image/jpeg"); // image/jpeg the default format
   elLink.href = imgContent;
 }
