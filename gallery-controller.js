@@ -7,7 +7,7 @@ function onGallery() {
 }
 
 function renderGallery() {
-  const images = getImages();
+  const images = getImages()
   // const userInput = onKeywordsFilter()
   const elGallery = document.querySelector(".gallery .grid-container");
 
@@ -29,6 +29,5 @@ function onImageSelect(id) {
 }
 
 function onKeywordsFilter(userInput) {
-  console.log(userInput);
   setKeywordsFilter(userInput)
 }

@@ -26,11 +26,7 @@
       <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
     <section class="gallery">
-      <input
-              type="input"
-              name="name"
-              onkeyup="onKeywordsFilter(this.value)"
-            />
+      <input type="input" name="name" onchange="onKeywordsFilter(this.value)" />
       <div class="grid-container"></div>
     </section>
     <section class="editor">
